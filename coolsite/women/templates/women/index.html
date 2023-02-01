@@ -1,12 +1,15 @@
 {% extends 'women/base.html' %}
 {% block content %}
-<h1>{{title5}}</h1>>
-<ul>  {% for p in post    %}
-    <li>
-        <h2> {{p.title}}       </h2>
-        <p>  {{p.content}}       </p>
-        <hr>
+
+<ul class="list-artikles" >
+    {% for p in post%}
+    <li><h2> {{p.title}}</h2>
+        <p> {{p.content | linebreaks | truncatewords:50}}</p>
+        <div class="clear"></div>
+        <p class="link-read-post"><a href="#"> читать пост </a> </p>
     </li>
-     {% endfor%}
-</ul>>
-{% endblock %}
+    {% endfor %}
+</ul>
+{% endblock%}
+
+

@@ -3,7 +3,7 @@ from django.http import HttpResponse,  HttpResponseNotFound, Http404
 from .models import *
 
 
-menu  = ['О сайте','добавить статью','обратная связь','войти']
+menu = ['О сайте','добавить статью','обратная связь','войти']
 def index11(request):
     post = Women.objects.all()
     return render(request, 'women/index.html', {'post': post, 'menu': menu, 'title5':'Главная страница))))))'})
