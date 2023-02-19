@@ -3,13 +3,17 @@
 
 <ul class="list-artikles" >
     {% for p in post%}
-    <li><h2> {{p.title}}</h2>
-        <p> {{p.content | linebreaks | truncatewords:50}}</p>
+    <li> <div class="article-panel">
+        <p class="first"> Категория: {{ p.cat}} </p>
+        <p class="last" > Дата: {{p.time_update|date:'d-m-Y H:i:s' }} </p>                                     </p>
+        </div>
+            <h2> {{p.title}}</h2>
+        <p> {{p.content | linebreaks | truncatewords:100}}</p>
         <div class="clear"></div>
-        <p class="link-read-post"><a href="{{ p.get_absolute_url  }}"> Читать пост </a></p>
+        <p class="link-read-post"><a href="{% url 'post' p.pk  %}"> Читать пост </a></p>
     </li>
     {% endfor %}
 </ul>
-{% endblock%}
+{% endblock %}
 
 

@@ -1,7 +1,6 @@
 from django.db import models
 from django.urls import reverse
 
-
 class Women(models.Model):
     objects = None
     title = models.CharField(max_length=255)
