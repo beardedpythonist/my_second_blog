@@ -7,10 +7,16 @@
         <p class="first"> Категория: {{ p.cat}} </p>
         <p class="last" > Дата: {{p.time_update|date:'d-m-Y H:i:s' }} </p>                                     </p>
         </div>
+
+
+                    {% if p.photo %}
+            <p> <img class="img-article-left thumb" src="{{  p.photo.url  }}"> </p>
+                    {% endif %}
+
             <h2> {{p.title}}</h2>
         <p> {{p.content | linebreaks | truncatewords:100}}</p>
         <div class="clear"></div>
-        <p class="link-read-post"><a href="{% url 'post' p.pk  %}"> Читать пост </a></p>
+        <p class="link-read-post"><a href="{% url 'post' p.slug  %}"> Читать пост </a></p>
     </li>
     {% endfor %}
 </ul>

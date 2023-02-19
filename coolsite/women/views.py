@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import *
 
@@ -32,9 +32,6 @@ def contact(request):
 def login(request):
     return HttpResponse('Авторизация')
 
-def show_post(request, cat_id):
-    pass
-
 
 def show_category(request, cat_id):
     post = Women.objects.filter(cat_id=cat_id)
@@ -48,6 +45,20 @@ def show_category(request, cat_id):
                'title5': 'отображение по рубрикам',
                'cat_selected': cat_id}
     return render(request, 'women/index.html', context=context)
+
+
+
+
+def show_post(request, post_slug):
+        post = get_object_or_404(Women, slug=post_slug)
+        cats = Category.objects.all()
+        context = {'post': post,
+                   'menu': menu,
+                   'cats': cats,
+                   'title5': post.title,
+                   'cat_selected': post.cat_id}
+        return render(request, 'women/post.html', context)
+
 
 
 def pageNotFound(request, exception):
